@@ -1,0 +1,12 @@
+{
+	"name": "sort-email-root",
+	"private": true,
+	"version": "1.0.0",
+	"scripts": {
+		"lint": "biome lint --apply-unsafe ./frontend",
+		"format": "biome format --write ./frontend"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.2.2"
+	}
+}
