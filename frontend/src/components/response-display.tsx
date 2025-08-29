@@ -1,22 +1,22 @@
 export function ResposnseDisplay() {
-	return (
-		<div className="p-6 bg-gray-50 dark:bg-gray-700 rounded-xl border shadow-inner border-gray-300 space-y-4">
-			<div className="flex items-center space-x-2">
-				<span className="text-gray-700 dark:text-gray-300 font-medium">
-					Categoria:
-				</span>
-				<span className="font-bold text-lg px-3 py-1 rounded-full text-yellow-800 dark:text-yellow-200">
-					Categoria produtivo ou inprodutivo
-				</span>
-			</div>
-			<div className="space-y-2">
-				<h3 className="text-gray-700 dark:text-gray-300 font-medium">
-					Resposta Sugerida:
-				</h3>
-				<p className="text-gray-900 dark:text-gray-100 text-base leading-relaxed p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-400 dark:border-gray-600 whitespace-pre-wrap">
-					Resposta sugerida vai renderizar aqui
-				</p>
-			</div>
-		</div>
-	);
+  return (
+    <div className="space-y-4 rounded-xl border border-gray-300 bg-gray-50 p-6 shadow-inner dark:bg-gray-700">
+      <div className="flex items-center space-x-2">
+        <span className="font-medium text-gray-700 dark:text-gray-300">
+          Categoria:
+        </span>
+        <span className="rounded-full px-3 py-1 font-bold text-lg text-yellow-800 dark:text-yellow-200">
+          Categoria produtivo ou inprodutivo
+        </span>
+      </div>
+      <div className="space-y-2">
+        <h3 className="font-medium text-gray-700 dark:text-gray-300">
+          Resposta Sugerida:
+        </h3>
+        <p className="whitespace-pre-wrap rounded-xl border border-gray-400 bg-white p-4 text-base text-gray-900 leading-relaxed dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
+          Resposta sugerida vai renderizar aqui
+        </p>
+      </div>
+    </div>
+  );
 }

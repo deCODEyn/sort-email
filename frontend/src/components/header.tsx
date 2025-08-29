@@ -1,12 +1,12 @@
 export function Header() {
-	return (
-		<header className="text-center mb-8">
-			<h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-				Classificador de E-mails
-			</h1>
-			<p className="text-gray-500 dark:text-gray-400">
-				Automatize a classificação de e-mails e gere respostas automáticas.
-			</p>
-		</header>
-	);
+  return (
+    <header className="mb-8 text-center">
+      <h1 className="mb-2 font-bold text-3xl text-gray-900 md:text-4xl dark:text-white">
+        Classificador de E-mails
+      </h1>
+      <p className="text-gray-500 dark:text-gray-400">
+        Automatize a classificação de e-mails e gere respostas automáticas.
+      </p>
+    </header>
+  );
 }
