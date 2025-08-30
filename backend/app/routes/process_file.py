@@ -12,7 +12,7 @@ async def process_file(
 
     return {
         "category": "Teste",
-        "reply": f"Teste com o arquivo {file.filename} bem-sucedido.",
+        "reply": f"Teste com o arquivo {file.filename} bem-sucedido. Modelo {model_name}",
         "tokens_used": 0,
         "model": "teste"
     }

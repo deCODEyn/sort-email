@@ -9,7 +9,7 @@ async def process_text(request: ProcessRequest):
 
     return {
         "category": "Teste",
-        "reply": "Teste de endpoint bem-sucedido.",
+        "reply": f"Teste de endpoint bem-sucedido. Modelo: {request.model}",
         "tokens_used": 0,
         "model": "teste"
     }
