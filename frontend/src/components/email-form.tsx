@@ -84,7 +84,7 @@ export function EmailForm() {
           htmlFor={fileId}
         >
           <input
-            accept=".txt,.pdf"
+            accept=".txt,.pdf,.doc,.docx"
             className="hidden"
             id={fileId}
             onChange={(e) => handleFileChange(e.target.files?.[0] || null)}
@@ -99,7 +99,7 @@ export function EmailForm() {
           onClick={onSubmit}
           type="button"
         >
-          Classificar e-mail
+          {hasFile ? 'Classificar arquivo' : 'Classificar e-mail'}
         </button>
       </div>
     </div>
