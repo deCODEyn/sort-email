@@ -3,6 +3,8 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL}
     container_name: sort-email-frontend
     ports:
       - "80:80"
@@ -22,7 +24,7 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
     env_file:
-      - .env
+      - .env.production
     restart: unless-stopped
     networks:
       - sortemail
