@@ -1,0 +1,17 @@
+# Pastas de dependências
+**/node_modules
+
+# Pastas de build
+**/dist
+**/build
+**/coverage
+
+# Arquivos de sistema e de configuração
+.git
+.gitignore
+.env
+.DS_Store
+*.log
+.vscode
+Dockerfile
+nginx.conf
