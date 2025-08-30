@@ -101,7 +101,7 @@ O desenvolvimento foi dividido em três fases distintas para garantir uma aborda
 * **Objetivo:** Construir a API em Python com FastAPI, configurar a comunicação com a API de IA e implementar a lógica de classificação e geração de respostas. Os arquivos `Dockerfile` do backend serão configurados.
 * **Entregável:** Código-fonte do backend funcional, pronto para receber requisições do frontend.
 
-### 4.3. Fase 3: Fase 3: Integração, Testes e Deploy
+### 4.3. Fase 3: Integração, Testes e Deploy
 * **Objetivo:** Integrar o frontend e o backend, garantindo que a comunicação entre eles seja fluida. Esta fase inclui a implementação de testes unitários e de integração para validar a aplicação, a orquestração final com o`docker-compose` e, por fim, o deploy da aplicação em um ambiente de produção.
 * **Entregável:** Aplicação completa e funcional, publicada e acessível online.
 
