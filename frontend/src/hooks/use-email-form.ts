@@ -1,9 +1,15 @@
 import { useState } from 'react';
+import { AI_MODELS } from '@/constants';
 import type { UseEmailFormReturn } from '@/types/email';
+import { useApiRequest } from './use-api-request';
 
 export function useEmailForm(): UseEmailFormReturn {
+  const classifyEmail = useApiRequest();
   const [emailText, setEmailText] = useState<string>('');
   const [file, setFile] = useState<File | null>(null);
+  const [selectedModel, setSelectedModel] = useState<string>(
+    AI_MODELS[0].value
+  );
   const hasFile = !!file;
   const isFormValid = emailText.length > 0 || hasFile;
 
@@ -21,18 +27,33 @@ export function useEmailForm(): UseEmailFormReturn {
     setFile(newFile);
   };
 
+  const handleModelChange = (model: string) => {
+    setSelectedModel(model);
+  };
+
+  const handleSubmit = async () => {
+    if (isFormValid) {
+      if (hasFile && file) {
+        await classifyEmail(file, selectedModel);
+      } else {
+        await classifyEmail(emailText, selectedModel);
+      }
+    }
+  };
+
   const clearForm = () => {
     setEmailText('');
     setFile(null);
   };
 
   return {
-    emailText,
-    file,
     hasFile,
     isFormValid,
+    selectedModel,
+    handleSubmit,
     handleEmailTextChange,
     handleFileChange,
+    handleModelChange,
     clearForm,
   };
 }

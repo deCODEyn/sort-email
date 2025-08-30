@@ -1,6 +1,6 @@
 export function Header() {
   return (
-    <header className="mb-8 text-center">
+    <header className="mb-15 text-center">
       <h1 className="mb-2 font-bold text-3xl text-gray-900 md:text-4xl dark:text-white">
         Classificador de E-mails
       </h1>

@@ -24,7 +24,7 @@ export function ResposnseDisplay() {
           Resposta Sugerida:
         </h3>
         <p className="whitespace-pre-wrap rounded-xl border border-gray-400 bg-white p-4 text-base text-gray-900 leading-relaxed dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
-          {response?.suggestedResponse}
+          {response?.reply}
         </p>
       </div>
     </div>

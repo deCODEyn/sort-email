@@ -15,30 +15,13 @@ export const ResponseProvider = ({ children }: ContextProviderType) => {
   const [response, setResponse] = useState<ApiResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const classifyEmail = (payload: string | File) => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      if (payload) {
-        setResponse({
-          category: 'Produtivo',
-          suggestedResponse: 'Isso é uma resposta sugerida de teste.',
-        });
-        setError(null);
-      } else {
-        setError(
-          'O texto do e-mail é muito curto. Por favor, insira mais texto.'
-        );
-      }
-    }, 1000);
-  };
-
   const value = {
-    isLoading,
     response,
+    setResponse,
     error,
-    classifyEmail,
     setError,
+    isLoading,
+    setIsLoading,
   };
 
   return (
