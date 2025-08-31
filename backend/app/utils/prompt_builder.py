@@ -1,0 +1,23 @@
+def email_classification_prompt(email_text: str) -> str:
+    return (
+        "Você é um classificador de e-mails em ambiente corporativo.\n\n"
+        "Sua tarefa:\n"
+        "1. Ler o e-mail fornecido.\n"
+        "2. Classificar como:\n"
+        "- \"Produtivo\": quando o conteúdo é útil, relacionado a trabalho, solicitações, reuniões, suporte ou assuntos profissionais.\n"
+        "- \"Improdutivo\": quando o conteúdo não tem utilidade para trabalho, é irrelevante, pessoal, spam ou não agrega valor corporativo.\n"
+        "3. Gerar uma resposta curta, profissional e educada, contendo até 500 caracteres.\n\n"
+        " Instruções obrigatórias de saída:\n"
+        "- Responda exclusivamente em JSON válido.\n"
+        "- O JSON deve conter somente as chaves \"category\" e \"reply\".\n"
+        "- Não inclua explicações, comentários, texto extra ou quebras de linha fora do JSON.\n"
+        "- Nunca adicione campos extras.\n"
+        "- O valor de \"category\" deve ser apenas \"Produtivo\" ou \"Improdutivo\".\n"
+        "- O valor de \"reply\" deve conter apenas a resposta."
+        "Formato final obrigatório (exemplo):\n\n"
+        "{\"category\": \"Produtivo\", \"reply\": \"Olá! Obrigado pelo contato. Já estou verificando sua solicitação de protocolo-123 e retorno em breve.\"}\n\n"
+        "Agora classifique e responda o seguinte e-mail:\n\n"
+        "EMAIL:\n<<<\n"
+        f"{email_text}\n"
+        ">>>"
+    )

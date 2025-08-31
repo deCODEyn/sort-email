@@ -19,13 +19,19 @@ A organização do projeto segue a arquitetura de monorepositório, com diretór
 
 `sort-email/`
 - `.dockerignore`
-- `.env`
+- `.env.exemple`
 - `.gitignore`
 - `docker-compose.dev.yml`
 - `docker-compose.prod.yml`
 - `README.md`
 - `backend/`
   - `app/`
+    - `routes/`
+    - `services/`
+    - `utils/`
+    - `__init__.py`
+    - `main.py`
+    - `schemas.py`
   - `Dockerfile`
   - `Dockerfile.dev`
   - `requirements.txt`
@@ -33,6 +39,7 @@ A organização do projeto segue a arquitetura de monorepositório, com diretór
   - `public/`
   - `src/`
     - `components/`
+    - `constants/`
     - `context/`
     - `hooks/`
     - `pages/`
@@ -43,8 +50,8 @@ A organização do projeto segue a arquitetura de monorepositório, com diretór
     - `vite-env.d.ts`
   - `Dockerfile`
   - `Dockerfile.dev`
-  - `nginx.conf`
   - `index.html`
+  - `nginx.conf`
   - `package.json`
   - `tsconfig*.json`
   - `vite.config.ts`
@@ -52,7 +59,7 @@ A organização do projeto segue a arquitetura de monorepositório, com diretór
 
 ### 2.1. Detalhamento de Diretórios e Arquivos
 `sort-email/`: Diretório raiz do projeto.
-* `.env`: Armazena variáveis de ambiente confidenciais, como chaves de API.
+* `.env.example`: Cópia exemplo da `.env.production`, onde são armazenadas variáveis de ambiente confidenciais, como chaves de API.
 * `.dockerignore`: Especifica arquivos e diretórios a serem ignorados pelo Docker durante a construção das imagens.
 * `docker-compose.dev.yml`: Define e orquestra os serviços  ambiente de desenvolvimento.
 * `docker-compose.prod.yml`: Define e orquestra os serviços  ambiente de produção.
@@ -60,6 +67,7 @@ A organização do projeto segue a arquitetura de monorepositório, com diretór
   * `index.html`: O ponto de entrada da aplicação, onde o script `main.tsx` é injetado.
   * `src/`: Contém o código-fonte da aplicação.
     * `components/`: Subdiretório para componentes reutilizáveis.
+    * `constants/`: Subdiretório para centralizar as constants da aplicação.
     * `context/`: Subdiretório onde estão os arquivos da ContextAPI.
     * `hooks/`: Subdiretório dos hooks personalizados contendo a lógica e regras de negócio.
     * `pages/`: Subdiretório para as páginas da aplicação.
@@ -72,8 +80,14 @@ A organização do projeto segue a arquitetura de monorepositório, com diretór
   * `Dockerfile`: Instruções para criar o contêiner Docker do frontend.
 * `backend/`: Serviço de API e processamento de IA construído com **Python**e  **FastAPI**.
   * `app/`: Contém os scripts da lógica da API.
-  * `requirements.txt`: Lista as dependências do Python.
+    * `routes/`: Contém as rotas da API.
+    * `services/`: Contém a lógica para os serviços de IA consumidos pela API.
+    * `utils/`: Contém os utilitários usados pela API.
+    * `__init__.py`: Mandatório para scripts **Python**.
+    * `main.py`: Script principal da API.
+    * `schemas.py`: Contém os schemas para validação de request e response.
   * `Dockerfile`: Instruções para criar o contêiner Docker do backend.
+  * `requirements.txt`: Lista as dependências do Python.
 
 ---
 
@@ -115,9 +129,14 @@ Para executar o projeto, siga os passos abaixo:
     git clone [https://github.com/deCODEyn/sort-email](https://github.com/deCODEyn/sort-email.git)
     cd sort-email
     ```
-2.  **Construa e inicie os contêineres:**
+2.  **Preencha suas váriaveis de ambiente:**  
+    Crie um arquivo .env.production e informe suas chaves de API conforme o `.env.exemple`
     ```bash
-    docker-compose -f docker-compose.prod.yml up --build
+    touch .env.production
+    ```
+3.  **Construa e inicie os contêineres:**
+    ```bash
+    docker compose -f docker-compose.prod.yml up --build
     ```
 A sua aplicação estará disponível em `http://localhost`.
 
