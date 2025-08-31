@@ -8,7 +8,7 @@ router = APIRouter()
 @router.post("/process-file", response_model=ProcessResponse)
 async def process_file(
     file: UploadFile = File(...),
-    model_name: str = Form("gemini-2.5-flas")
+    model_name: str = Form("gemini")
 ):
     content = await file.read()
     text = guess_and_extract(file.filename, content)

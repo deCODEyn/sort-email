@@ -10,7 +10,7 @@ async def process_text(request: ProcessRequest):
     cleaned_text = clean_text(request.text or "")
     
     if not cleaned_text.strip():
-        raise HTTPException(status_code=400, detail="Não foi validar o texto do seu e-mail.")
+        raise HTTPException(status_code=400, detail="Não foi possível validar o texto do e-mail.")
     
     processed_text = remove_stopwords(cleaned_text)
     result = await ai_classify_and_reply(processed_text, request.model)

@@ -22,35 +22,33 @@ async def ai_classify_and_reply(email_text: str, model_name: str) -> Dict[str, A
             raise ValueError("Chave de API do Groq não encontrada.")
         return await groq_service.classify_and_reply(prompt)
 
-    try:
-        if "gemini" in lowered:
-            try:
-                return await try_gemini()
-            except Exception as e:
-                logger.error(f"[Gemini] erro: {e} → tentando Groq")
-                try:
-                    return await try_groq()
-                except Exception as e2:
-                    logger.error(f"[Groq e Gemini] erro: {e2}")
-        elif "groq" in lowered:
+    if "gemini" in lowered:
+        try:
+            return await try_gemini()
+        except Exception as e:
+            logger.error(f"[Gemini] erro: {e} → tentando Groq")
             try:
                 return await try_groq()
-            except Exception as e:
-                logger.error(f"[Groq] erro: {e} → tentando Gemini")
-                try:
-                    return await try_gemini()
-                except Exception as e2:
-                    logger.error(f"[Gemini e Groq] erro: {e2}")
-        else:
-            raise ValueError("Modelo inválido ou não suportado.")
+            except Exception as e2:
+                logger.error(f"[Groq e Gemini] erro: {e2}")
+    elif "groq" in lowered:
+        try:
+            return await try_groq()
+        except Exception as e:
+            logger.error(f"[Groq] erro: {e} → tentando Gemini")
+            try:
+                return await try_gemini()
+            except Exception as e2:
+                logger.error(f"[Gemini e Groq] erro: {e2}")
+    else:
+        raise ValueError("Modelo inválido ou não suportado.")
 
-    except Exception as e:
-        logger.error(f"Erro no acesso a IA → fallback rule_based: {e}")
-        category = rule_based_category(email_text)
-        reply = get_fallback_reply(category)
-        return {
-            "category": category,
-            "reply": reply,
-            "model": "rule_based_fallback",
-            "tokens_used": 0,
-        }
+    logger.error(f"Erro no acesso a IA → fallback rule_based")
+    category = rule_based_category(email_text)
+    reply = get_fallback_reply(category)
+    return {
+        "category": category,
+        "reply": reply,
+        "model": "rule_based_fallback",
+        "tokens_used": 0,
+    }

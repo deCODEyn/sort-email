@@ -1,6 +1,5 @@
 import pytest
 from app.utils.parser import strict_parse_json
-import json
 
 def test_strict_parse_json_valid_json():
     """Testa JSON válido."""

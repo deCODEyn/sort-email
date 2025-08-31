@@ -6,7 +6,8 @@
     "lint": "biome lint --apply-unsafe ./frontend",
     "format": "biome format --write ./frontend",
     "test:backend": "docker compose -f docker-compose.dev.yml run --rm backend python -m pytest",
-    "test:backend:watch": "docker compose -f docker-compose.dev.yml run --rm backend pytest --loop"
+    "test:unit": "docker compose -f docker-compose.dev.yml run --rm backend python -m pytest ./tests/unit",
+    "test:integration": "docker compose -f docker-compose.dev.yml run --rm backend python -m pytest ./tests/integration"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.2"
