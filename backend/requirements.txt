@@ -8,3 +8,7 @@ nltk
 openai
 google-generativeai
 groq
+pytest
+pytest-asyncio
+httpx
+pytest-watch

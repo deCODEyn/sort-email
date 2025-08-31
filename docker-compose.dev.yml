@@ -25,7 +25,6 @@ services:
       - "8000:8000"
     environment:
       - PYTHONUNBUFFERED=1
-      # opcional — crie um .env com sua chave
     env_file:
       - .env.development
     volumes:
