@@ -17,12 +17,30 @@ async def ai_classify_and_reply(email_text: str, model_name: str) -> Dict[str, A
             raise ValueError("Chave de API do Gemini não encontrada.")
         return await gemini_service.classify_and_reply(prompt)
 
+    async def try_groq():
+        if not os.getenv("GROQ_API_KEY"):
+            raise ValueError("Chave de API do Groq não encontrada.")
+        return await groq_service.classify_and_reply(prompt)
+
     try:
         if "gemini" in lowered:
             try:
                 return await try_gemini()
             except Exception as e:
-                logger.error(f"[Gemini] erro: {e}")
+                logger.error(f"[Gemini] erro: {e} → tentando Groq")
+                try:
+                    return await try_groq()
+                except Exception as e2:
+                    logger.error(f"[Groq e Gemini] erro: {e2}")
+        elif "groq" in lowered:
+            try:
+                return await try_groq()
+            except Exception as e:
+                logger.error(f"[Groq] erro: {e} → tentando Gemini")
+                try:
+                    return await try_gemini()
+                except Exception as e2:
+                    logger.error(f"[Gemini e Groq] erro: {e2}")
         else:
             raise ValueError("Modelo inválido ou não suportado.")
 
