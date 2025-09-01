@@ -46,4 +46,4 @@ export function useApiRequest() {
   };
 
   return classifyEmail;
-};
+}
