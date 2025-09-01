@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
 import { useResponseContext } from '@/context/response-context';
 import { useApiRequest } from '@/hooks/use-api-request';
 
-// Mock para isolar os testes do hook
+// Mock para isolar os testes do context
 vi.mock('@/context/response-context', () => ({
   useResponseContext: vi.fn(),
 }));
@@ -10,7 +10,7 @@ const mockFetch = vi.fn();
 global.fetch = mockFetch;
 
 describe('useApiRequest', () => {
-  // Mocks o contexto
+  // Mocks do contexto
   const mockSetError = vi.fn();
   const mockSetIsLoading = vi.fn();
   const mockSetResponse = vi.fn();

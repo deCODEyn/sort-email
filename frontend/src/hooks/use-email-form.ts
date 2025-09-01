@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { AI_MODELS } from '@/constants';
 import type { UseEmailFormReturn } from '@/types/email';
-import { useApiRequest } from './use-api-request';
+import { useApiRequest } from '@/hooks/use-api-request';
 
 export function useEmailForm(): UseEmailFormReturn {
   const classifyEmail = useApiRequest();
