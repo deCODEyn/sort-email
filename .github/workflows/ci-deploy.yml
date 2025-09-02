@@ -46,15 +46,24 @@ jobs:
           RENDER_BRANCH: ${{ env.RENDER_BRANCH }}
         run: |
           echo "Triggering deploy on Render for service ${RENDER_SERVICE_ID} (branch ${RENDER_BRANCH})..."
+          
+          # Cria JSON seguro
+          data=$(printf '{"branch":"%s"}' "$RENDER_BRANCH")
+          echo "Payload JSON: $data"
+          
+          # Faz o deploy
           resp=$(curl -s -X POST "https://api.render.com/v1/services/${RENDER_SERVICE_ID}/deploys" \
             -H "Authorization: Bearer ${RENDER_API_KEY}" \
             -H "Content-Type: application/json" \
-            -d "$(jq -nc --arg branch "${RENDER_BRANCH}" '{branch: $branch}')")
+            -d "$data")
+          echo "Response from Render:"
           echo "$resp" | jq .
+
           deploy_id=$(echo "$resp" | jq -r .id)
           if [ -z "$deploy_id" ] || [ "$deploy_id" = "null" ]; then
             echo "Failed to create Render deploy. Response:"; echo "$resp"; exit 1
           fi
+
           echo "Deploy ID: $deploy_id"
           echo "Polling deploy status..."
           for i in $(seq 1 60); do
