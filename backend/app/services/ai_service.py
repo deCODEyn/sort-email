@@ -1,10 +1,10 @@
 import os
 import logging
 from typing import Dict, Any
-from ..utils.nlp import rule_based_category
-from ..utils.fallback import get_fallback_reply
-from ..utils.prompt_builder import email_classification_prompt
-from . import gemini_service, groq_service
+from app.utils.nlp import rule_based_category
+from app.utils.fallback import get_fallback_reply
+from app.utils.prompt_builder import email_classification_prompt
+from app.services import gemini_service, groq_service
 
 logger = logging.getLogger(__name__)
 

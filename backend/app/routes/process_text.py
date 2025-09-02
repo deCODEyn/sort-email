@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
-from ..schemas import ProcessRequest, ProcessResponse
-from ..utils.nlp import clean_text, remove_stopwords
-from ..services.ai_service import ai_classify_and_reply
+from app.schemas import ProcessRequest, ProcessResponse
+from app.utils.nlp import clean_text, remove_stopwords
+from app.services.ai_service import ai_classify_and_reply
 
 router = APIRouter()
 

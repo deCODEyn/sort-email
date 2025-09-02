@@ -1,6 +1,6 @@
 import os
 from typing import Dict, Any
-from..utils.parser import strict_parse_json
+from app.utils.parser import strict_parse_json
 from groq import Groq
 
 async def classify_and_reply(prompt: str) -> Dict[str, Any]:

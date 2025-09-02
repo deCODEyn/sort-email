@@ -35,8 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: test-backend
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq curl
       - name: Trigger Render deploy (create deploy from branch)
@@ -81,8 +80,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: test-frontend
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - name: Build frontend Docker image
         env:
           RENDER_SERVICE_URL: ${{ secrets.RENDER_SERVICE_URL }}

@@ -1,7 +1,7 @@
 import os
-import google.generativeai as genai
-from ..utils.parser import strict_parse_json
 from typing import Dict, Any
+from app.utils.parser import strict_parse_json
+import google.generativeai as genai
 
 async def classify_and_reply(prompt: str) -> Dict[str, Any]:
     api_key = os.getenv("GEMINI_API_KEY")

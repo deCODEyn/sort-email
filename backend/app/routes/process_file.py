@@ -1,7 +1,7 @@
 from fastapi import APIRouter, UploadFile, File, Form, HTTPException
-from ..schemas import ProcessResponse
-from ..utils.nlp import clean_text, guess_and_extract, remove_stopwords
-from ..services.ai_service import ai_classify_and_reply
+from app.schemas import ProcessResponse
+from app.utils.nlp import clean_text, guess_and_extract, remove_stopwords
+from app.services.ai_service import ai_classify_and_reply
 
 router = APIRouter()
 
