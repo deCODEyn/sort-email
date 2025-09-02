@@ -12,17 +12,17 @@ env:
   RENDER_BRANCH: main
 
 jobs:
-test-backend:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v4
-    - run: npm run test:backend
+  test-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm run test:backend
 
-test-frontend:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v4
-    - run: npm run test:frontend
+  test-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm run test:frontend
 
   deploy-backend:
     name: Deploy backend → Render
