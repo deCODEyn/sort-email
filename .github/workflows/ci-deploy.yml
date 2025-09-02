@@ -16,6 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Criar .env.development dinamicamente
+        run: |
+          echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> backend/.env.development
+          echo "GROQ_API_KEY=${{ secrets.GROQ_API_KEY }}" >> backend/.env.development
+          echo "GEMINI_MODEL_NAME=${{ secrets.GEMINI_MODEL_NAME }} >> backend/.env.development
+          echo "GROQ_MODEL_NAME=${{ secrets.GROQ_MODEL_NAME }} >> backend/.env.development
       - run: npm run test:backend
 
   test-frontend:
