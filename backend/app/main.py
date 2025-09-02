@@ -25,5 +25,5 @@ app.add_middleware(
 def health():
     return {"status": "ok"}
 
-app.include_router(process_text.router)
-app.include_router(process_file.router)
+app.include_router(process_text.router, prefix="/api")
+app.include_router(process_file.router, prefix="/api")
