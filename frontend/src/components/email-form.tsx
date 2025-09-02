@@ -73,7 +73,7 @@ export function EmailForm() {
             className="w-full rounded-xl border border-gray-300 bg-gray-50 p-4 text-gray-900 text-sm outline-none transition duration-200 focus:border-green-500 focus:ring-2 dark:border-gray-300 dark:bg-gray-700 dark:text-gray-100"
             id={emailId}
             onChange={(e) => handleEmailTextChange(e.target.value)}
-            placeholder="Faça o upload do e-mail ou informe aqui que te ajudo a classifica-lo."
+            placeholder="Faça o upload do e-mail ou informe ele aqui que te ajudo a classifica-lo."
             rows={10}
           />
         </div>

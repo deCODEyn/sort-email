@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react';
-import { beforeEach, describe, expect, it, vi, type Mock } from 'vitest';
+import { beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
 import { useResponseContext } from '@/context/response-context';
 import { useEmailForm } from '@/hooks/use-email-form';
 
@@ -16,6 +16,7 @@ vi.mock('@/context/response-context', () => ({
 
 // Mock da constante AI_MODELS
 const { MOCKED_AI_MODELS } = vi.hoisted(() => {
+  // biome-ignore lint/nursery/noShadow: Required to use MOCKED_AI_MODELS
   const MOCKED_AI_MODELS = [
     { value: 'default-model', label: 'Default Model' },
     { value: 'another-model', label: 'Another Model' },
@@ -94,7 +95,7 @@ describe('useEmailForm', () => {
   it('deve chamar classifyEmail com texto e modelo corretos quando um texto é fornecido', async () => {
     const { result } = renderHook(() => useEmailForm());
     const testText = 'email de teste';
-    const testModel = 'default-model'
+    const testModel = 'default-model';
     // Configura formulário para ter texto e modelo
     act(() => {
       result.current.handleEmailTextChange(testText);
@@ -110,7 +111,7 @@ describe('useEmailForm', () => {
   it('deve chamar classifyEmail com arquivo e modelo corretos quando um arquivo é fornecido', async () => {
     const { result } = renderHook(() => useEmailForm());
     const testFile = new File(['conteúdo'], 'test.txt', { type: 'text/plain' });
-    const testModel = 'default-model'
+    const testModel = 'default-model';
     // Configura formulário para ter arquivo e modelo
     act(() => {
       result.current.handleFileChange(testFile);

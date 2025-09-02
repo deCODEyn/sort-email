@@ -10,5 +10,5 @@ export interface ResponseContextInterface {
 }
 
 export type ContextProviderType = {
-  children: React.ReactElement;
+  children: React.ReactNode;
 };
