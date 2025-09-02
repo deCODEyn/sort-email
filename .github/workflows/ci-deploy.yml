@@ -20,8 +20,8 @@ jobs:
         run: |
           echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> backend/.env.development
           echo "GROQ_API_KEY=${{ secrets.GROQ_API_KEY }}" >> backend/.env.development
-          echo "GEMINI_MODEL_NAME=${{ secrets.GEMINI_MODEL_NAME }} >> backend/.env.development
-          echo "GROQ_MODEL_NAME=${{ secrets.GROQ_MODEL_NAME }} >> backend/.env.development
+          echo "GEMINI_MODEL_NAME=${{ secrets.GEMINI_MODEL_NAME }}" >> backend/.env.development
+          echo "GROQ_MODEL_NAME=${{ secrets.GROQ_MODEL_NAME }}" >> backend/.env.development
       - run: npm run test:backend
 
   test-frontend:
@@ -91,9 +91,12 @@ jobs:
         run: |
           cid=$(docker create frontend-prod)
           mkdir -p ./dist
-          docker cp $cid:/usr/share/nginx/html ./dist
+          docker cp $cid:/usr/share/nginx/html/. ./dist
           docker rm $cid
-          ls -la ./dist
+          ls -R ./dist
+      - name: Add SPA redirect rules for Netlify
+        run: |
+          echo "/* /index.html 200" > ./dist/_redirects
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
       - name: Deploy to Netlify (production)
