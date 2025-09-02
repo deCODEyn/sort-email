@@ -16,12 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Criar .env.development dinamicamente
+      - name: Criar .env.development na raiz
         run: |
-          echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> backend/.env.development
-          echo "GROQ_API_KEY=${{ secrets.GROQ_API_KEY }}" >> backend/.env.development
-          echo "GEMINI_MODEL_NAME=${{ secrets.GEMINI_MODEL_NAME }}" >> backend/.env.development
-          echo "GROQ_MODEL_NAME=${{ secrets.GROQ_MODEL_NAME }}" >> backend/.env.development
+          echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> .env.development
+          echo "GROQ_API_KEY=${{ secrets.GROQ_API_KEY }}" >> .env.development
+          echo "GEMINI_MODEL_NAME=${{ secrets.GEMINI_MODEL_NAME }}" >> .env.development
+          echo "GROQ_MODEL_NAME=${{ secrets.GROQ_MODEL_NAME }}" >> .env.development
       - run: npm run test:backend
 
   test-frontend:
@@ -84,9 +84,10 @@ jobs:
         env:
           RENDER_SERVICE_URL: ${{ secrets.RENDER_SERVICE_URL }}
         run: |
-          # Build passing the API URL (so Vite picks it up at build time)
-          echo "Building frontend Docker image with VITE_API_URL=${RENDER_SERVICE_URL}/api"
-          docker build --build-arg VITE_API_URL="${RENDER_SERVICE_URL}/api" -t frontend-prod "${{ env.FRONTEND_DIR }}"
+          echo "Building frontend with VITE_API_URL=${RENDER_SERVICE_URL}/api"
+          docker build \
+            --build-arg VITE_API_URL="${RENDER_SERVICE_URL}/api" \
+            -t frontend-prod "${{ env.FRONTEND_DIR }}"
       - name: Extract built static files (dist) from container
         run: |
           cid=$(docker create frontend-prod)
@@ -104,5 +105,8 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
-          # Use netlify CLI to publish the ./dist directory
-          netlify deploy --site="${NETLIFY_SITE_ID}" --auth="${NETLIFY_AUTH_TOKEN}" --prod --dir=./dist
+          netlify deploy \
+            --site="${NETLIFY_SITE_ID}" \
+            --auth="${NETLIFY_AUTH_TOKEN}" \
+            --prod \
+            --dir=./dist
