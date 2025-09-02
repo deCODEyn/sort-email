@@ -2,7 +2,7 @@ import pytest
 import os
 from fastapi.testclient import TestClient
 from app.main import app
-from app.conf_test import get_model_name
+from ..conf_test import get_model_name
 
 client = TestClient(app)
 
