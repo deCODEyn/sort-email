@@ -18,7 +18,7 @@ def test_process_text_success(mock_ai_classify):
     }
 
     response = client.post(
-        "/process-text",
+        "/api/process-text",
         json={"text": "Esse é um e-mail de teste.", "model": "gemini"}
     )
 
@@ -37,7 +37,7 @@ def test_process_text_empty_content():
     
      # Configura o mock simular conteúdo vazio
     response = client.post(
-        "/process-text",
+        "/api/process-text",
         json={"text": "", "model": "gemini"}
     )
 
@@ -51,7 +51,7 @@ def test_process_text_ai_service_error(mock_ai_classify):
     mock_ai_classify.side_effect = HTTPException(status_code=500, detail="Internal Server Error")
 
     response = client.post(
-        "/process-text",
+        "/api/process-text",
         json={"text": "Esse é um e-mail de teste.", "model": "gemini"}
     )
 

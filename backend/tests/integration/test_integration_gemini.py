@@ -2,7 +2,6 @@ import pytest
 import os
 from fastapi.testclient import TestClient
 from app.main import app
-from ..conf_test import get_model_name
 
 client = TestClient(app)
 
@@ -19,7 +18,7 @@ def test_integration_process_text_with_gemini_model(get_model_name):
         "model": "gemini"
     }
     
-    response = client.post("/process-text", json=request_data)
+    response = client.post("/api/process-text", json=request_data)
 
     assert response.status_code == 200
     data = response.json()
@@ -42,7 +41,7 @@ def test_integration_process_file_with_gemini_model(get_model_name):
     file_content = b"Esse documento de teste e para testar integracao de arquivos, sobre um relatorio da semana."
     
     response = client.post(
-        "/process-file",
+        "/api/process-file",
         data={"model_name": "gemini"},
         files={"file": ("test_file.txt", file_content, "text/plain")}
     )

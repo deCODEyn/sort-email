@@ -20,7 +20,7 @@ def test_process_file_success(mock_ai_classify):
     filename = "document.txt"
     model_name = "gemini"
     response = client.post(
-        "/process-file",
+        "/api/process-file",
         data={"model_name": model_name},
         files={"file": (filename, file_content, "text/plain")}
     )
@@ -45,7 +45,7 @@ def test_process_file_empty_content(mock_guess_and_extract):
     file_content = b""
     filename = "empty.txt"
     response = client.post(
-        "/process-file",
+        "/api/process-file",
         files={"file": (filename, file_content, "text/plain")}
     )
 
@@ -63,7 +63,7 @@ def test_process_file_ai_service_error(mock_ai_classify):
     filename = "document.txt"
 
     response = client.post(
-        "/process-file",
+        "/api/process-file",
         files={"file": (filename, file_content, "text/plain")}
     )
 

@@ -14,7 +14,7 @@ def test_all_apis_failure_fallback_to_rule_based(monkeypatch):
         "model": "gemini"
     }
 
-    response = client.post("/process-text", json=request_data)
+    response = client.post("/api/process-text", json=request_data)
 
     assert response.status_code == 200
     
