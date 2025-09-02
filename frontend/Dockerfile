@@ -1,5 +1,3 @@
-# Dockerfile para o frontend React
-
 FROM node:22-alpine AS builder
 
 ARG VITE_API_URL
