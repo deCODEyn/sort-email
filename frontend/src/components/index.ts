@@ -2,4 +2,5 @@
 export * from '@/components/email-form';
 export * from '@/components/error-to-send';
 export * from '@/components/header';
+export * from '@/components/loading-spinner';
 export * from '@/components/response-display';

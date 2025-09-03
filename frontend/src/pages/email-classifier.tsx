@@ -1,5 +1,10 @@
-import { Loader } from 'lucide-react';
-import { EmailForm, ErrorToSend, Header, ResposnseDisplay } from '@/components';
+import {
+  EmailForm,
+  ErrorToSend,
+  Header,
+  LoadingSpinner,
+  ResposnseDisplay,
+} from '@/components';
 import { useResponseContext } from '@/context/response-context';
 
 export function EmailClassifier() {
@@ -11,13 +16,7 @@ export function EmailClassifier() {
         <Header />
         <main className="space-y-5">
           {isLoading ? (
-            <div className="text-center font-bold text-gray-900 dark:text-gray-100">
-              <Loader
-                className="animate-[spin_2s_linear_infinite] text-blue-600 dark:text-blue-400"
-                size={50}
-              />
-              Enviando e-mail para classificação. Por favor aguarde.
-            </div>
+            <LoadingSpinner message="Enviando e-mail para classificação. Por favor aguarde." />
           ) : (
             <>
               <EmailForm />

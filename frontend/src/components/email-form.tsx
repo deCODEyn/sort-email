@@ -34,9 +34,12 @@ export function EmailForm() {
   return (
     <div className="my-5 mb-8 gap-4">
       <div className="my-4 flex flex-col md:flex-row-reverse">
-        <div className="-mt-8 flex items-center justify-end md:w-1/3">
-          <label className="sr-only" htmlFor="model-select">
-            Selecione o modelo de IA:
+        <div className="-mt-3 grid items-center justify-end md:flex md:w-1/3">
+          <label
+            className="mx-2 my-1 text-center font-medium text-gray-700 text-sm dark:text-gray-300"
+            htmlFor="model-select"
+          >
+            Modelo IA:
           </label>
           <select
             className="mb-2 rounded-xl border border-gray-300 bg-gray-50 p-2 text-gray-900 text-sm outline-none transition duration-200 focus:border-green-500 focus:ring-2 md:mb-0 dark:border-gray-300 dark:bg-gray-700 dark:text-gray-100"
