@@ -10,7 +10,7 @@ import '@testing-library/jest-dom';
 const EMAIL_PLACEHOLDER_REGEX =
   /Faça o upload do e-mail ou informe ele aqui que te ajudo a classifica-lo./i;
 const FILE_LABEL_REGEX = /Escolha um arquivo/i;
-const MODEL_LABEL_REGEX = /Selecione o modelo de IA:/i;
+const MODEL_LABEL_REGEX = /Modelo IA:/i;
 const SUBMIT_EMAIL_REGEX = /Classificar e-mail/i;
 const SUBMIT_FILE_REGEX = /Classificar arquivo/i;
 
